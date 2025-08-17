@@ -1,8 +1,14 @@
 
 
 
-//  VITE_API_BASE=http://localhost:5000
-const BASE = (import.meta.env.VITE_LIVE_URL || "").replace(/\/+$/, "");
+
+const BASE =
+  (import.meta.env.VITE_LIVE_URL ||
+   import.meta.env.VITE_API_BASE ||
+   "").replace(/\/+$/, "");
+
+console.log("API Base URL:", BASE);
+
 
 async function fetchWithTimeout(url, opts = {}, ms = 30000) {
   const controller = new AbortController();
